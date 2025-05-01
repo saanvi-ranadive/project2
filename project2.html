@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project 2 Report</title>
+    <style>
+      :root {
+        --color-neutral-95: hsl(220 10% 95%);
+        --color-neutral-90: hsl(220 10% 90%);
+        --color-neutral-80: hsl(220 10% 80%);
+        --color-neutral-70: hsl(220 10% 70%);
+        --color-neutral-60: hsl(220 10% 60%);
+        --color-neutral-50: hsl(220 10% 50%);
+        --color-neutral-40: hsl(220 10% 40%);
+        --color-neutral-30: hsl(220 10% 30%);
+        --color-neutral-20: hsl(220 10% 20%);
+        --color-neutral-10: hsl(220 10% 10%);
+      }
+
+      html {
+        font: 100%/1.5 system-ui;
+        counter-reset: figure;
+        background: var(--color-neutral-95);
+        max-width: min(75vw, 80em);
+        margin: 0 auto;
+      }
+
+      /* Headings */
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1,
+      h2 {
+        border-bottom: 1px solid var(--color-neutral-80);
+        padding-bottom: 0.2em;
+      }
+
+      h1 {
+        margin-block: 1em 0.5rem;
+        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+        font-weight: 800;
+
+        small {
+          display: block;
+          width: fit-content;
+          padding: 0.2em 0.5em;
+          margin-inline: auto;
+          color: white;
+          background: var(--color-neutral-40);
+          font-size: 40%;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+      }
+
+      h2 {
+        font-size: 180%;
+        color: var(--color-neutral-30);
+      }
+
+      h3 {
+        font-size: 130%;
+      }
+
+      /* Lists */
+
+      ul,
+      ol {
+        padding-inline-start: 2em;
+      }
+
+      li {
+        &::marker {
+          color: var(--color-neutral-40);
+        }
+
+        + li {
+          margin-top: 0.2em;
+        }
+      }
+
+      /* Sectioning elements */
+
+      header {
+        padding-block: 1em;
+        text-align: center;
+      }
+
+      main {
+        background: white;
+        color: var(--color-neutral-20);
+        border-radius: 1rem;
+        padding: 0.1rem 2rem;
+      }
+
+      /* Figures */
+
+      figure {
+        margin: 1em 0;
+        padding: 0.5rem;
+        margin-inline: -0.5em;
+        border: 1px solid var(--color-neutral-80);
+        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+        text-align: center;
+        background: white;
+
+        > figcaption {
+          font: 500 75% var(--font-sans);
+          background: var(--color-neutral-95);
+          padding: 0.5rem;
+          margin: -0.5rem;
+          margin-top: 0.5rem;
+          counter-increment: figure;
+          text-align: left;
+
+          &::before {
+            content: 'Figure ' counter(figure) ': ';
+            font-weight: bold;
+            color: var(--color-neutral-40);
+          }
+
+          a:not(:hover, :focus, :active) {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: color-mix(
+              in lab,
+              currentColor,
+              transparent 70%
+            );
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <small>Assignment 4</small>
+        Persuasive or Deceptive Visualization?
+      </h1>
+
+      <p><strong>Saanvi Ranadive</strong> — <em>sranadive@ucsd.edu</em></p>
+    </header>
+
+    <main>
+      <h2>Proposition: California was the Only State to Drastically Decrease Abortion Providers from 2014-2017</h2>
+
+      <section>
+        <h3>FOR the Proposition</h3>
+
+        <figure>
+          <img src="visualization1.png" alt="Visualization For Proposition" style="width: 100%; height: auto;"/>
+          <figcaption>California is the only state with a dramatic decrease in abortion providers between 2014 and 2017.</figcaption>
+        </figure>
+
+        <p>Design Decisions and Rationale:</p>
+
+        <ul>
+          <li>I used absolute change in number of abortion care providers to emphasize the large magnitude of California's decrease in abortion providers. With a decrease of 93, California lost far more abortion providers than any other state, in terms of raw counts. <i>(Score: -0.5)</i></li>
+          <li> I used a sequential color scale, since there was no meaningful midpoint in the data. This choice allowed me to show a smooth gradient of change and effectively emphasize California’s dramatic drop. I also did not alter the midpoint of the color scale in this color scale, so it reflected the median change in the number of abortion providers from 2014-2017. <i>(Score: +2)</i></li>
+          <li>Rather than use a discrete color scale, I chose to use a continuous one to obscure smaller variations between all other states that were not California. This was a deceptive choice, as it flattened differences across states with smaller changes, exaggerating California’s outlier status. The result made California seem like not only the largest drop, but the only significant one. <i>(Score -1)</i></li>
+          <li>I titled the visualization accurately and clearly, ensuring that viewers were not misled about the content. <i>(Score: +2)</i></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>AGAINST the Proposition</h3>
+
+        <figure>
+          <img src="visualization2.png" alt="Visualization Against Proposition" style="width: 100%; height: auto;"/>
+          <figcaption>From 2014 to 2017, abortion provider numbers remained fairly stable across most states, with Wyoming seeing the largest percentage decrease.</figcaption>
+        </figure>
+
+        <p>Design Decisions and Rationale:</p>
+
+        <ul>
+          <li>I used percentage change in number of abortion providers to downplay California’s dramatic drop. While California lost 93 providers (a substantial raw decrease) presenting this as a percentage made it appear less severe due to California’s large starting number. This diminished the perceived significance of California’s drop. <i>(Score: -0.5)</i></li>
+          <li>I applied a data transformation by dividing the percentage change from 2014 to 2017 by the absolute number of providers in 2017. This produced a new metric: relative change per remaining provider, and further minimized the effect of California's dramatic absolute change in abortion providers. This technique is especially deceptive, since I did not disclose this transformation to the audience in the visualization or its tile. <i>(Score: -2)</i></li>
+          <li>I used a continuous color scale to make most states appear a similar hue, and altered the midpoint of the color scale to make this hue similar to most of the states in the first graph (excluding California). This gave the impression that percentage changes across states were mostly uniform, and created an illusion of overall stability. Overall, this design choice further minimized California’s outlier status. <i>(Score: -2)</i></li>
+          <li>I titled the visualization in a misleading way, choosing the generic label “Percentage Change in Number of Abortion Providers.” This implied I was using the direct percentage change metric from the dataset ("% change in the no. of abortion providers, 2014-2017"), when in fact I had created and used a transformed version. My choice of title obscured the true complexity of the data, and concealed a major transformation that changed the meaning of the visualization. <i>(Score: -1.5)</i> </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Final Reflection</h2>
+
+        <p>Throughout the process of creating these two visualizations, I discovered how thin the line can be between earnest and deceptive design choices. Choosing to highlight either absolute or percentage changes in abortion providers exemplified this, as neither approach tells the full story. The absolute change map emphasizes California’s dramatic loss of 93 providers but ignores the fact that California still retained the majority of its providers. On the other hand, the percentage map minimizes California’s drop by comparison, despite the sheer volume lost. Ultimately, showing both perspectives is crucial to provide viewers with a complete and honest understanding.</p>
+        <p>That said, some of my design choices were clearly deceptive. Altering the midpoint of the color scale in the second map gave the misleading impression that most states experienced no real change, when in fact most saw a decline. Using a continuous rather than a discrete color scale further exaggerated the contrast by grouping most states together visually and isolating California. Additionally, I intentionally did not disclose a data transformation I applied in the second visualization, which further minimized California’s drop in abortion providers.</p>
+        <p>This project has led me to associate “ethical analysis and visualization” with transparency with the viewer. I noticed that the main similarity among all of my most deceptive techniques was that they all concealed important information from the viewer. I’ve found that the boundary between “acceptable” and “misleading” persuasive choices is not as much about specific techniques as it is about openness and disclosure.</p>
+      </section>
+    </main>
+  </body>
+</html>
